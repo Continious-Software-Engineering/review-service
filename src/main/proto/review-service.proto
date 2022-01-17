@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "review";
+
+service ReviewService {
+  rpc AddReview(AddReviewRequest) returns (Empty) {}
+  rpc GetReviews(GetReviewsRequest) returns (stream Review) {}
+  rpc GetReview(GetReviewRequest) returns (Review) {}
+  rpc UpdateReviews(UpdateReviewRequest) returns (Empty) {}
+}
+
+message AddReviewRequest {
+  string product_id = 1;
+  string user_id = 2;
+  int32 rating = 3;
+  string description = 4;
+}
+
+message GetReviewsRequest {
+  string product_id = 1;
+}
+
+message GetReviewRequest {
+  string review_id = 1;
+}
+
+message UpdateReviewRequest {
+  string review_id =1;
+  int32 rating = 3;
+  string description = 4;
+}
+
+message Review {
+  string review_id =1;
+  string user_id = 2;
+  int32 rating = 3;
+  string description = 4;
+}
+
+message Empty {}

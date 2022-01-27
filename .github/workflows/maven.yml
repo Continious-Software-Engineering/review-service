@@ -22,9 +22,15 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-        server-id: github # value of repository/id field of the pom.xml
-        server-username: GITHUB_USER_REF  # env variable name for username
-        server-password: GITHUB_TOKEN_REF # env variable name for GitHub Personal Access Token
+        
+    - uses: s4u/maven-settings-action@v2.3.0
+      with:
+        servers: |
+          [{
+              "id": "github",
+              "username": "${{ secrets.GH_PACKAGE_REPO_USERNAM }}",
+              "password": "${{ secrets.GH_PACKAGE_REPO_PASSWORD }}"
+          }]
         
     - name: Cache the Maven packages to speed up build
       uses: actions/cache@v1

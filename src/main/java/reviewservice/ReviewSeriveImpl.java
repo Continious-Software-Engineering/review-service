@@ -3,19 +3,10 @@ package reviewservice;
 import io.grpc.stub.StreamObserver;
 import net.devh.boot.grpc.server.service.GrpcService;
 import review.ReviewServiceGrpc;
-import review.ReviewServiceOuterClass;
-import review.ReviewServiceOuterClass.Empty;
-import review.ReviewServiceOuterClass.AddReviewRequest;
-import review.ReviewServiceOuterClass.GetReviewsRequest;
-import review.ReviewServiceOuterClass.Review;
-import review.ReviewServiceOuterClass.UpdateReviewRequest;
-import review.ReviewServiceOuterClass.GetReviewRequest;
+import review.ReviewServiceOuterClass.*;
 
 @GrpcService
 public class ReviewSeriveImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
-    public ReviewSeriveImpl() {
-        super();
-    }
 
     @Override
     public void addReview(AddReviewRequest request, StreamObserver<Empty> responseObserver) {

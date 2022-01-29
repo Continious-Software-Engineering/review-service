@@ -9,7 +9,7 @@ This service implements a review feature for the webshop.
   - [review-service-api](https://github.com/Continious-Software-Engineering/review-service-api)
 
 ### Features
-Reviews over GRPC-API
+- Reviews over GRPC-API
 
 ### Continious Deployment
 TODO

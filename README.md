@@ -4,7 +4,7 @@ This is part of an Assignment for the continious software engineering class. The
 This service implements a review feature for the webshop.
 
 ### Links
-- [Developer Documentation]()
+- [Developer Documentation](https://github.com/Continious-Software-Engineering/review-service/wiki)
 - implemented APIs
   - [review-service-api](https://github.com/Continious-Software-Engineering/review-service-api)
 

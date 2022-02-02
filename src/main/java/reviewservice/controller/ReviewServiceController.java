@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ReviewServiceController {
-    @GetMapping("/")
-    @ResponseBody
-    public String home() {
-        return "Review Service";
-    }
+
+  @GetMapping("/")
+  @ResponseBody
+  public String home() {
+    return "Review Service";
+  }
 }

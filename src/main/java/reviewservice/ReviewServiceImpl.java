@@ -4,16 +4,9 @@ import io.grpc.stub.StreamObserver;
 import lombok.extern.java.Log;
 import net.devh.boot.grpc.server.service.GrpcService;
 import review.ReviewServiceGrpc;
-import review.ReviewServiceOuterClass.AddReviewRequest;
-import review.ReviewServiceOuterClass.Empty;
-import review.ReviewServiceOuterClass.GetReviewRequest;
-import review.ReviewServiceOuterClass.GetReviewsRequest;
-import review.ReviewServiceOuterClass.Review;
-import review.ReviewServiceOuterClass.UpdateReviewRequest;
+import review.ReviewServiceOuterClass.*;
 
 import static java.lang.String.valueOf;
-import static java.util.logging.Level.INFO;
-import static jdk.nashorn.internal.objects.NativeMath.log;
 
 @Log
 @GrpcService
@@ -21,7 +14,7 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
 
   @Override
   public void addReview(AddReviewRequest request, StreamObserver<Empty> responseObserver) {
-    log(INFO, "ADD REVIEW");
+      log.info("ADD REVIEW: sample log");
     Empty response = Empty.newBuilder().build();
     responseObserver.onNext(response);
     responseObserver.onCompleted();
@@ -29,7 +22,7 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
 
   @Override
   public void getReviews(GetReviewsRequest request, StreamObserver<Review> responseObserver) {
-    log(INFO, "GET REVIEWS");
+      log.info("GET REVIEWS: sample log");
     for (int i = 0; i < 5; i++) {
       Review response = Review.newBuilder()
           .setReviewId(valueOf(i))
@@ -44,7 +37,7 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
 
   @Override
   public void getReview(GetReviewRequest request, StreamObserver<Review> responseObserver) {
-    log(INFO, "GET REVIEW");
+      log.info("GET REVIEW: sample log");
     Review response = Review.newBuilder()
         .setReviewId("review_id")
         .setUserId("user_id")
@@ -57,7 +50,7 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
 
   @Override
   public void updateReview(UpdateReviewRequest request, StreamObserver<Empty> responseObserver) {
-    log(INFO, "UPDATE REVIEW");
+      log.info("UPDATE REVIEW: sample log");
     Empty response = Empty.newBuilder().build();
     responseObserver.onNext(response);
     responseObserver.onCompleted();

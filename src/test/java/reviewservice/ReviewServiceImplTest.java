@@ -76,6 +76,7 @@ class ReviewServiceImplTest {
     for (int i = 0; i < results.size(); i++) {
       Review review = Review.newBuilder()
           .setReviewId(valueOf(i))
+          .setProductId("product_id")
           .setRating(i)
           .setDescription("description")
           .build();

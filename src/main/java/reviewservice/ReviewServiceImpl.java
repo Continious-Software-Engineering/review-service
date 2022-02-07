@@ -26,6 +26,7 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
     for (int i = 0; i < 5; i++) {
       Review response = Review.newBuilder()
           .setReviewId(valueOf(i))
+          .setProductId("product_id")
           .setRating(i)
           .setDescription("description")
           .build();

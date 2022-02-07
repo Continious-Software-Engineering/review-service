@@ -6,7 +6,6 @@
 
   <groupId>review-service</groupId>
   <artifactId>review-service</artifactId>
-  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
@@ -72,6 +71,7 @@
   </properties>
 
   <build>
+    <finalName>review-service</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>

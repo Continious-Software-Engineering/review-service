@@ -26,7 +26,6 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
     for (int i = 0; i < 5; i++) {
       Review response = Review.newBuilder()
           .setReviewId(valueOf(i))
-          .setUserId("user_id")
           .setRating(i)
           .setDescription("description")
           .build();
@@ -36,21 +35,8 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
   }
 
   @Override
-  public void getReview(GetReviewRequest request, StreamObserver<Review> responseObserver) {
-      log.info("GET REVIEW: sample log");
-    Review response = Review.newBuilder()
-        .setReviewId("review_id")
-        .setUserId("user_id")
-        .setRating(1)
-        .setDescription("description")
-        .build();
-    responseObserver.onNext(response);
-    responseObserver.onCompleted();
-  }
-
-  @Override
-  public void updateReview(UpdateReviewRequest request, StreamObserver<Empty> responseObserver) {
-      log.info("UPDATE REVIEW: sample log");
+  public void deleteReview(DeleteReviewRequest request, StreamObserver<Empty> responseObserver) {
+    log.info("DELETE REVIEW: sample log");
     Empty response = Empty.newBuilder().build();
     responseObserver.onNext(response);
     responseObserver.onCompleted();

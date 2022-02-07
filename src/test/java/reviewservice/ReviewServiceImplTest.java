@@ -5,10 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import review.ReviewServiceOuterClass.AddReviewRequest;
 import review.ReviewServiceOuterClass.Empty;
-import review.ReviewServiceOuterClass.GetReviewRequest;
 import review.ReviewServiceOuterClass.GetReviewsRequest;
 import review.ReviewServiceOuterClass.Review;
-import review.ReviewServiceOuterClass.UpdateReviewRequest;
+import review.ReviewServiceOuterClass.DeleteReviewRequest;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,6 @@ class ReviewServiceImplTest {
   void addReview() throws Exception {
     AddReviewRequest addReviewRequest = AddReviewRequest.newBuilder()
         .setProductId("product_id")
-        .setUserId("user_id")
         .setRating(1)
         .setDescription("description")
         .build();
@@ -57,27 +55,11 @@ class ReviewServiceImplTest {
   }
 
   @Test
-  void getReview() throws Exception {
-    GetReviewRequest getReviewRequest = GetReviewRequest.newBuilder()
-        .setReviewId("review_id")
-        .build();
-    StreamRecorder<Review> responseObserver = StreamRecorder.create();
-    underTest.getReview(getReviewRequest, responseObserver);
-    awaitResponse(responseObserver.awaitCompletion(5, TimeUnit.SECONDS));
-    assertNull(responseObserver.getError());
-    List<Review> results = responseObserver.getValues();
-    assertReview(results);
-  }
-
-  @Test
-  void updateReview() throws Exception {
-    UpdateReviewRequest updateReviewRequest = UpdateReviewRequest.newBuilder()
-        .setReviewId("review_id")
-        .setRating(1)
-        .setDescription("description")
-        .build();
+  void deleteReviews() throws Exception{
+    DeleteReviewRequest deleteReviewRequest = DeleteReviewRequest.newBuilder()
+            .build();
     StreamRecorder<Empty> responseObserver = StreamRecorder.create();
-    underTest.updateReview(updateReviewRequest, responseObserver);
+    underTest.deleteReview(deleteReviewRequest, responseObserver);
     awaitResponse(responseObserver.awaitCompletion(5, TimeUnit.SECONDS));
     assertNull(responseObserver.getError());
     List<Empty> results = responseObserver.getValues();
@@ -94,23 +76,11 @@ class ReviewServiceImplTest {
     for (int i = 0; i < results.size(); i++) {
       Review review = Review.newBuilder()
           .setReviewId(valueOf(i))
-          .setUserId("user_id")
           .setRating(i)
           .setDescription("description")
           .build();
       assertEquals(review, results.get(i));
     }
-  }
-
-  private void assertReview(List<Review> results) {
-    assertEquals(1, results.size());
-    Review review = Review.newBuilder()
-        .setReviewId("review_id")
-        .setUserId("user_id")
-        .setRating(1)
-        .setDescription("description")
-        .build();
-    assertEquals(review, results.get(0));
   }
 
   private void awaitResponse(boolean responseObserver) {

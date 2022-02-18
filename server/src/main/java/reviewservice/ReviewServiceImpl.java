@@ -23,7 +23,7 @@ public class ReviewServiceImpl extends ReviewServiceGrpc.ReviewServiceImplBase {
     if (isReviewRatingInRange(request)) {
       reviewservice.model.Review newReview = createNewReview(request);
       dataController.addReview(newReview);
-    };
+    }
 
     Empty response = Empty.newBuilder().build();
     responseObserver.onNext(response);

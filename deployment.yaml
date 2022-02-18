@@ -1,0 +1,40 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviewservice
+spec:
+  selector:
+    matchLabels:
+      app: reviewservice
+  template:
+    metadata:
+      labels:
+        app: reviewservice
+    spec:
+      containers:
+        - image: robinsadeghpour/cse:5.0
+          name: cse
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-service
+spec:
+  ports:
+    - name: tomcat
+      nodePort: 30719
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    - name: grpc
+      nodePort: 30562
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+  selector:
+    app: reviewservice
+  type: NodePort

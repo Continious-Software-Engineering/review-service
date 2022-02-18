@@ -31,9 +31,6 @@ jobs:
         restore-keys: ${{ runner.os }}-m2   
         
     - name: Build with Maven
-      run: mvn -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml -B package --file pom.xml
-      env:
-        USER_NAME: ${{ secrets.GH_PACKAGE_REPO_USERNAME }}
-        ACCESS_TOKEN: ${{ secrets.GH_PACKAGE_REPO_PASSWORD }}
+      run: mvn --batch-mode --update-snapshots verify -B package --file pom.xml
     
    

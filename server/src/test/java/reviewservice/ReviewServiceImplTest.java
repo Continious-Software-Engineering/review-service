@@ -9,11 +9,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import review.ReviewServiceOuterClass.AddReviewRequest;
-import review.ReviewServiceOuterClass.Empty;
-import review.ReviewServiceOuterClass.GetReviewsRequest;
-import review.ReviewServiceOuterClass.Review;
-import review.ReviewServiceOuterClass.DeleteReviewRequest;
+import review.ReviewServiceOuterClass.*;
 import reviewservice.controller.DataController;
 
 import java.util.ArrayList;

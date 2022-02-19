@@ -15,9 +15,9 @@ This service implements a review feature for the webshop.
 - gRPC ([Spring Boot GRPC Starter](https://github.com/yidongnan/grpc-spring-boot-starter))
 - MongoDB (Atlas)
 
-### continuous Integration
+### Continuous Integration
 ![grafik](https://user-images.githubusercontent.com/38283032/154798129-f4980b14-d904-449e-984e-d89eb54fac46.png)
 
 
-### continuous Deployment
+### Continuous Deployment
 ![grafik](https://user-images.githubusercontent.com/38283032/154798038-8746f46c-98a8-4177-9bbf-e0f0e095ff82.png)
